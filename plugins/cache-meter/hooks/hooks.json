@@ -1,0 +1,6 @@
+{
+  "description": "cache-meter: turn.step reads each request's cache usage; a one-second clock.every drives the countdown; ui.render draws the two-line AbovePrompt band",
+  "modules": [
+    "./cache-meter.tsx"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "codex-bridge",
+  "version": "0.0.1",
+  "description": "Work with the local Codex CLI from Claude Code: codex-consult for adversarial design review in a read-only sandbox, codex-delegate for sandboxed implementation that keeps .git read-only.",
+  "author": {
+    "name": "francize",
+    "url": "https://github.com/francize"
+  },
+  "homepage": "https://github.com/francize/my-better-claude/tree/main/plugins/codex-bridge",
+  "repository": "https://github.com/francize/my-better-claude",
+  "license": "MIT",
+  "keywords": [
+    "codex",
+    "openai",
+    "second-opinion",
+    "code-review",
+    "delegation",
+    "multi-model",
+    "claude-code"
+  ]
+}

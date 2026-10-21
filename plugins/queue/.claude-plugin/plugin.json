@@ -1,0 +1,27 @@
+{
+  "name": "queue",
+  "version": "0.0.1",
+  "description": "A real prompt queue: Enter while Claude works queues the prompt instead of steering the running turn, and it is sent when the turn ends. Send now, edit or cancel each one from a band above the prompt.",
+  "author": {
+    "name": "francize",
+    "url": "https://github.com/francize"
+  },
+  "homepage": "https://github.com/francize/my-better-claude/tree/main/plugins/queue",
+  "repository": "https://github.com/francize/my-better-claude",
+  "license": "MIT",
+  "keywords": [
+    "mod",
+    "queue",
+    "prompts",
+    "workflow"
+  ],
+  "types": "./types/index.d.ts",
+  "userConfig": {
+    "enterQueues": {
+      "type": "boolean",
+      "title": "Enter queues while Claude works",
+      "description": "On: Enter during a turn queues the prompt. Off: Enter steers the running turn as before, and only the queue chord (ctrl+x enter) or /queue <prompt> queues",
+      "default": true
+    }
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "name": "my-better-claude",
+  "owner": {
+    "name": "francize",
+    "url": "https://github.com/francize"
+  },
+  "metadata": {
+    "description": "Plugins and mods that make Claude Code better: work with the local Codex CLI, watch the prompt cache, preview pasted images, queue prompts without steering.",
+    "version": "0.0.1"
+  },
+  "plugins": [
+    {
+      "name": "codex-bridge",
+      "source": "./plugins/codex-bridge",
+      "description": "Work with the local Codex CLI from Claude Code: codex-consult for adversarial design review in a read-only sandbox, codex-delegate for sandboxed implementation that keeps .git read-only.",
+      "version": "0.0.1",
+      "author": {
+        "name": "francize",
+        "url": "https://github.com/francize"
+      },
+      "keywords": [
+        "codex",
+        "openai",
+        "second-opinion",
+        "code-review",
+        "delegation",
+        "multi-model",
+        "skills"
+      ],
+      "category": "productivity"
+    },
+    {
+      "name": "cache-meter",
+      "source": "./plugins/cache-meter",
+      "description": "Prompt-cache meter above the prompt: the hit rate and the prompt as read + wrote + new, a live countdown to expiry, named misses, and when to /compact or /clear. Slash commands like /effort never reset it.",
+      "version": "0.0.1",
+      "author": {
+        "name": "francize",
+        "url": "https://github.com/francize"
+      },
+      "keywords": [
+        "mod",
+        "prompt-caching",
+        "observability",
+        "cost"
+      ],
+      "category": "productivity"
+    },
+    {
+      "name": "image-preview",
+      "source": "./plugins/image-preview",
+      "description": "Hover a pasted [Image #N] to see the picture, above the prompt while you write and on the prompts you sent; in a window by the pointer or drawn in the terminal.",
+      "version": "0.0.1",
+      "author": {
+        "name": "francize",
+        "url": "https://github.com/francize"
+      },
+      "keywords": [
+        "mod",
+        "images",
+        "paste",
+        "preview"
+      ],
+      "category": "productivity"
+    },
+    {
+      "name": "queue",
+      "source": "./plugins/queue",
+      "description": "A real prompt queue: Enter while Claude works queues the prompt instead of steering the running turn, and it is sent when the turn ends. Send now, edit or cancel each one from a band above the prompt.",
+      "version": "0.0.1",
+      "author": {
+        "name": "francize",
+        "url": "https://github.com/francize"
+      },
+      "keywords": [
+        "mod",
+        "queue",
+        "prompts",
+        "workflow"
+      ],
+      "category": "productivity"
+    }
+  ]
+}

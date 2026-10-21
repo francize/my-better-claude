@@ -1,0 +1,27 @@
+{
+  "name": "image-preview",
+  "version": "0.0.1",
+  "description": "Hover a pasted [Image #N] to see the picture, above the prompt while you write and on the prompts you sent; in a window by the pointer or drawn in the terminal.",
+  "author": {
+    "name": "francize",
+    "url": "https://github.com/francize"
+  },
+  "homepage": "https://github.com/francize/my-better-claude/tree/main/plugins/image-preview",
+  "repository": "https://github.com/francize/my-better-claude",
+  "license": "MIT",
+  "keywords": [
+    "mod",
+    "images",
+    "paste",
+    "preview"
+  ],
+  "types": "./types/plugin-state.d.ts",
+  "userConfig": {
+    "window": {
+      "type": "boolean",
+      "title": "Preview in a window",
+      "description": "Where the terminal cannot draw the picture itself, show it in a small window of its own by the pointer, outside the terminal, at full quality (macOS, Windows, and Linux with X11 and Python's tkinter). Off, the terminal draws it in cells.",
+      "default": true
+    }
+  }
+}

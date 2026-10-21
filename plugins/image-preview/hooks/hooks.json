@@ -1,0 +1,4 @@
+{
+  "description": "image-preview: the prompt box is polled for [Image #N]; ui.render draws chips in the AbovePrompt band and over sent prompts, and the preview over the transcript; ui.message opens it while the pointer is on a chip",
+  "modules": ["./mod.tsx"]
+}

@@ -1,0 +1,6 @@
+{
+  "description": "queue: prompt.submit holds what is typed over a running turn; turn.complete sends the next one; ui.render draws the AbovePrompt band",
+  "modules": [
+    "./queue-mod.tsx"
+  ]
+}
