@@ -2,16 +2,18 @@
 
 English | [中文](README.zh-CN.md)
 
-A Claude Code plugin marketplace of things that make day-to-day Claude Code better: a second model to argue with, a meter for the prompt cache you pay for, a look at the images you paste, and a queue that never steers.
+![my-better-claude: image-preview, cache-meter, queue and codex-bridge for Claude Code](docs/img/hero.png)
+
+A Claude Code plugin marketplace of things that make day-to-day Claude Code better: a look at the images you paste, a meter for the prompt cache you pay for, a queue that never steers, and a second model to argue with.
 
 ## Install
 
 ```
 /plugin marketplace add francize/my-better-claude
-/plugin install codex-bridge@my-better-claude
-/plugin install cache-meter@my-better-claude
 /plugin install image-preview@my-better-claude
+/plugin install cache-meter@my-better-claude
 /plugin install queue@my-better-claude
+/plugin install codex-bridge@my-better-claude
 ```
 
 Install only the ones you want; they are independent.
@@ -19,15 +21,41 @@ Install only the ones you want; they are independent.
 
 | Plugin                                   | Kind   | What it does                                                                                                      |
 | ---------------------------------------- | ------ | ----------------------------------------------------------------------------------------------------------------- |
-| [`codex-bridge`](plugins/codex-bridge)   | skills | Consult the local Codex CLI for design review, or delegate implementation to it in a sandbox                      |
-| [`cache-meter`](plugins/cache-meter)     | mod    | Prompt-cache meter above the prompt: read / wrote / new tokens, countdown to expiry, named misses, session totals |
 | [`image-preview`](plugins/image-preview) | mod    | Hover a pasted `[Image #N]` to see the picture, while writing and on sent prompts                                 |
+| [`cache-meter`](plugins/cache-meter)     | mod    | Prompt-cache meter above the prompt: read / wrote / new tokens, countdown to expiry, named misses, session totals |
 | [`queue`](plugins/queue)                 | mod    | Enter while Claude works queues the prompt instead of steering; Send now, edit or cancel each from a band          |
+| [`codex-bridge`](plugins/codex-bridge)   | skills | Consult the local Codex CLI for design review, or delegate implementation to it in a sandbox                      |
 
 
 ## Plugins
 
+### image-preview
+
+![image-preview: the pointer over the [Image #1] chip above the prompt shows the pasted picture](docs/img/image-preview.png)
+
+<sub>① hover `[Image #N]` · ② the picture it stands for</sub>
+
+Hover `[Image #N]` in the prompt or in a sent message to see the picture: drawn by the terminal (Ghostty, kitty), in a window by the pointer, or in colored cells. Details: [plugin README](plugins/image-preview/README.md).
+
+### cache-meter
+
+![cache-meter band above the prompt: 99.6% reused (226k read + 780 wrote + 2 new) · expires in 46:59 (1h TTL) · compacts in 40:59 if idle](docs/img/cache-meter.png)
+
+<sub>① hit rate · ② the prompt as read + wrote + new tokens · ③ countdown to expiry · ④ countdown to idle compaction</sub>
+
+A band above the prompt with the last request's hit rate, its prompt as read + wrote + new tokens, and a countdown to expiry. Misses are named (lapsed, model or effort changed, prefix changed), and a large expired prompt gets a `/compact` hint. Details: [plugin README](plugins/cache-meter/README.md).
+
+### queue
+
+![queue band: ▾ Queued 1, with Send now, edit and cancel on the queued prompt](docs/img/queue.png)
+
+<sub>① the queue band · ② Send now, edit or cancel each queued prompt</sub>
+
+Press Enter while Claude works and the prompt waits in a queue above the prompt, instead of steering the running turn. It is sent when the turn ends. Each prompt has Send now, edit and cancel; `/queue <prompt>` queues one too. Details: [plugin README](plugins/queue/README.md).
+
 ### codex-bridge
+
+![codex-bridge: codex-consult debates Codex in a read-only sandbox; codex-delegate has Codex edit under workspace-write with .git read-only, and Claude checks each step](docs/img/codex-bridge.png)
 
 Two skills, one shared wrapper around `codex exec`.
 
@@ -40,31 +68,19 @@ Two skills, one shared wrapper around `codex exec`.
 
 Both keep one Codex thread per task, so follow-up turns carry only what is new. Details: [plugin README](plugins/codex-bridge/README.md).
 
-### cache-meter
-
-A band above the prompt with the last request's hit rate, its prompt as read + wrote + new tokens, and a countdown to expiry. Misses are named (lapsed, model or effort changed, prefix changed), and a large expired prompt gets a `/compact` hint. Details: [plugin README](plugins/cache-meter/README.md).
-
-### image-preview
-
-Hover `[Image #N]` in the prompt or in a sent message to see the picture: drawn by the terminal (Ghostty, kitty), in a window by the pointer, or in colored cells. Details: [plugin README](plugins/image-preview/README.md).
-
-### queue
-
-Press Enter while Claude works and the prompt waits in a queue above the prompt, instead of steering the running turn. It is sent when the turn ends. Each prompt has Send now, edit and cancel; `/queue <prompt>` queues one too. Details: [plugin README](plugins/queue/README.md).
-
 ## Requirements
 
 - Claude Code 2.1.287+ for the mods (checked against 2.1.304); `image-preview` hover needs `"tui": "fullscreen"`
-- `codex-bridge`: [`codex`](https://developers.openai.com/codex/cli) CLI on `PATH` (developed against 0.154.0), `jq`, bash 3.2+ (stock macOS bash works)
 - `image-preview`: `sips` (macOS), ImageMagick (Linux), or PowerShell/ImageMagick (Windows, WSL); Linux windows need Python's Tk on X11
+- `codex-bridge`: [`codex`](https://developers.openai.com/codex/cli) CLI on `PATH` (developed against 0.154.0), `jq`, bash 3.2+ (stock macOS bash works)
 
 ## Development
 
 ```
 claude plugin validate .                              # marketplace
 claude plugin validate plugins/<name>
-claude plugin test plugins/cache-meter
 claude plugin test plugins/image-preview
+claude plugin test plugins/cache-meter
 claude plugin test plugins/queue
 ```
 
